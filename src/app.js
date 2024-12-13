@@ -1,27 +1,29 @@
 const express = require("express");
-const app = express();
 const connectDB = require("./config/database");
-const User = require("./models/user");
+const app = express();
+const cookieParser = require("cookie-parser");
+const authRouter = require("./routes/auth");
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
+app.use(cookieParser());
 
-app.post("/signup", async (req, res, next) => {
-  const user = new User(req.body);
-  try {
-    await user.save();
-    res.send("User saved successfully");
-  } catch (err) {
-    res.status(400).send("Error saving the user" + err.message);
-  }
-});
+app.use("/", authRouter);
 
 connectDB()
   .then(() => {
     console.log("Database connection established successfully");
     app.listen(7777, () => {
-      console.log("server is listening successfully on port 7777");
+      console.log("Serever is successfully listening on port 7777...");
     });
   })
   .catch((err) => {
-    console.log("Database is unable to connect!!!", err);
+    console.error("Database is unable to connect!!!");
   });
