@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema(
         }
       },
     },
+    role: {
+      type: String,
+      default: "user",
+    },
   },
   {
     timestamps: true,
@@ -45,7 +49,10 @@ const userSchema = new mongoose.Schema(
 
 userSchema.methods.getJWT = async function () {
   const user = this;
-  const token = await jwt.sign({ _id: user._id }, "DEV@Tinder$790");
+  const token = await jwt.sign(
+    { _id: user._id, role: user.role },
+    "DEV@Tinder$790"
+  );
   return token;
 };
 
