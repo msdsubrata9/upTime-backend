@@ -1,0 +1,22 @@
+{
+  "name": "uptime-backend",
+  "version": "1.0.0",
+  "description": "Reflects the uptime of services and is easy to remember",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Subrata Saha",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.8.4",
+    "nodemon": "^3.1.9",
+    "validator": "^13.12.0"
+  }
+}
