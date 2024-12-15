@@ -40,12 +40,16 @@ serviceRouter.get("/services", async (req, res) => {
 });
 
 // Get a specific service by ID (public)
-serviceRouter.get("/services/:id", async (req, res) => {
+// Delete a service (admin only)
+serviceRouter.delete("/services/:id", verifyAdmin, async (req, res) => {
   try {
-    const service = await Service.findById(req.params.id);
-    res.json({ message: "Service details", data: service });
+    const deletedService = await Service.findByIdAndDelete(req.params.id);
+    if (!deletedService) {
+      return res.status(404).send("Service not found");
+    }
+    res.json({ message: "Service deleted successfully", data: deletedService });
   } catch (err) {
-    res.status(400).send("Error fetching service: " + err.message);
+    res.status(400).send("Error deleting service: " + err.message);
   }
 });
 

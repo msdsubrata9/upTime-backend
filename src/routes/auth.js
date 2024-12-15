@@ -6,10 +6,22 @@ const bcrypt = require("bcrypt");
 
 authRouter.post("/signup", async (req, res, next) => {
   try {
-    // validate signup data
+    // Validate signup data
     validateSignupData(req);
-    const { firstName, lastName, emailId, password, role } = req.body;
-    // encrypt the password
+    const { firstName, lastName, emailId, password } = req.body;
+
+    // Extract domain from email and convert to lowercase for consistency
+    const domain = emailId.split("@")[1].toLowerCase();
+
+    // Default role is 'user', but change it if the email is not from common providers
+    let role = "user";
+    const commonEmailDomains = ["gmail.com", "outlook.com", "yahoo.com"];
+
+    if (!commonEmailDomains.includes(domain)) {
+      role = "admin"; // Assign 'admin' role to non-common email domains
+    }
+
+    // Encrypt the password
     const passwordHash = await bcrypt.hash(password, 10);
 
     const user = new User({
@@ -20,13 +32,15 @@ authRouter.post("/signup", async (req, res, next) => {
       role: role,
     });
     const savedUser = await user.save();
-    // create the JWT token
+
+    // Create the JWT token
     const token = await savedUser.getJWT();
-    // add the token to the cookie and send the response back to the user
+
+    // Add the token to the cookie and send the response back to the user
     res.cookie("token", token);
-    res.json({ message: "User added successfully", data: savedUser });
+    res.json({ message: "User added successfully", data: savedUser, token });
   } catch (err) {
-    res.status(400).send("Error saving the user" + err.message);
+    res.status(400).send("Error saving the user: " + err.message);
   }
 });
 
@@ -43,7 +57,7 @@ authRouter.post("/login", async (req, res) => {
       const token = await user.getJWT();
       // add the token to the cookie and send the response back to the user
       res.cookie("token", token);
-      res.send(user);
+      res.status(200).json({ token, user });
     } else {
       throw new Error("Invalid Creds");
     }
