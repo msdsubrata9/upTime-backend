@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://uptime-web-nu.vercel.app"],
+    origin: ["http://localhost:3000", "https://uptime-web-phi.vercel.app"],
     credentials: true,
   })
 );
