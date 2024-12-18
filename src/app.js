@@ -22,9 +22,9 @@ app.use("/", serviceRouter);
 connectDB()
   .then(() => {
     console.log("Database connection established successfully");
-    // Vercel requires the app to export a request handler
-    module.exports = app; // Make sure the app is exported as a module
   })
   .catch((err) => {
     console.error("Database is unable to connect!!!");
   });
+
+module.exports = app;
