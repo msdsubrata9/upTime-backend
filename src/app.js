@@ -10,6 +10,8 @@ app.use(
   cors({
     origin: "https://uptime-web-seven.vercel.app",
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
 
