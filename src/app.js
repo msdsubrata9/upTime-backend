@@ -6,14 +6,18 @@ const authRouter = require("./routes/auth");
 const serviceRouter = require("./routes/services");
 const cors = require("cors");
 
-app.use(
-  cors({
-    origin: "https://uptime-web-seven.vercel.app",
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  })
-);
+const corsOptions = {
+  origin: "https://uptime-web-seven.vercel.app", // The correct frontend URL
+  credentials: true, // Allow cookies to be sent
+  allowedHeaders: ["Content-Type", "Authorization"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+};
+
+// Apply CORS middleware globally before defining routes
+app.use(cors(corsOptions));
+
+// Ensure that your backend can handle OPTIONS preflight requests
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
