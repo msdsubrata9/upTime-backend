@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://uptime-web-phi.vercel.app"],
+    origin: ["http://localhost:3000"],
     credentials: true,
   })
 );
@@ -22,9 +22,8 @@ app.use("/", serviceRouter);
 connectDB()
   .then(() => {
     console.log("Database connection established successfully");
-    app.listen(7777, () => {
-      console.log("Serever is successfully listening on port 7777...");
-    });
+    // Vercel requires the app to export a request handler
+    module.exports = app; // Make sure the app is exported as a module
   })
   .catch((err) => {
     console.error("Database is unable to connect!!!");
