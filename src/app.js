@@ -7,7 +7,7 @@ const serviceRouter = require("./routes/services");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "https://uptime-web-seven.vercel.app", // The correct frontend URL
+  origin: "https://uptime-web-45ccd.web.app/", // The correct frontend URL
   credentials: true, // Allow cookies to be sent
   allowedHeaders: ["Content-Type", "Authorization"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
