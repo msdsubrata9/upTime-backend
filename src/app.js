@@ -27,7 +27,19 @@ app.use(
 );
 
 app.options("*", (req, res) => {
-  console.log("Handling OPTIONS request for:", req.originalUrl);
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://uptime-web-olive.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, X-CSRF-Token, X-Requested-With, Accept"
+  );
   res.status(200).send();
 });
 
