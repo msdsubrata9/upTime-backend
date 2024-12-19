@@ -6,8 +6,8 @@
   to = "/.netlify/functions/app"
   status = 200
   force = true
-  headers = {
-    Access-Control-Allow-Origin = "https://uptime-fe.netlify.app",
+  headers = { 
+    Access-Control-Allow-Origin = "https://uptime-fe.netlify.app", 
     Access-Control-Allow-Credentials = "true"
   }
   methods = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
