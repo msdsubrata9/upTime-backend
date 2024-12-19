@@ -6,23 +6,14 @@
       "use": "@vercel/node"
     }
   ],
-  "functions": {
-    "src/app.js": {
-      "maxDuration": 30,
-      "memory": 1024
-    },
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/src/app.js",
-        "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-        "headers": {
-          "Access-Control-Allow-Origin": "https://uptime-web-olive.vercel.app",
-          "Access-Control-Allow-Credentials": "true",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization, X-CSRF-Token"
-        }
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/app.js",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "https://uptime-web-olive.vercel.app"
       }
-    ]
-  }
+    }
+  ]
 }
