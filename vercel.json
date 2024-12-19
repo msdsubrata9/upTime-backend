@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "source": "/(.*)",
+      "src": "/(.*)",
       "dest": "src/app.js",
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
       "headers": {
