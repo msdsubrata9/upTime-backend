@@ -13,15 +13,11 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
+      "Authorization",
       "X-CSRF-Token",
       "X-Requested-With",
       "Accept",
       "Accept-Version",
-      "Content-Length",
-      "Content-MD5",
-      "Content-Type",
-      "Date",
-      "X-Api-Version",
     ],
   })
 );
@@ -38,9 +34,9 @@ app.options("*", (req, res) => {
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Content-Type, X-CSRF-Token, X-Requested-With, Accept"
+    "Content-Type, Authorization, X-CSRF-Token"
   );
-  res.status(200).send();
+  res.sendStatus(200);
 });
 
 app.use(express.json());
