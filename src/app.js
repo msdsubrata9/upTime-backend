@@ -10,10 +10,26 @@ app.use(
   cors({
     origin: "https://uptime-web-olive.vercel.app",
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "X-CSRF-Token",
+      "X-Requested-With",
+      "Accept",
+      "Accept-Version",
+      "Content-Length",
+      "Content-MD5",
+      "Content-Type",
+      "Date",
+      "X-Api-Version",
+    ],
   })
 );
 
-app.options("*", cors());
+app.options("*", (req, res) => {
+  console.log("Handling OPTIONS request for:", req.originalUrl);
+  res.status(200).send();
+});
 
 app.use(express.json());
 app.use(cookieParser());
