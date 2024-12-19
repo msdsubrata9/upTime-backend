@@ -12,7 +12,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://uptime-web-olive.vercel.app"
+          "value": "http://uptime-web-olive.vercel.app"
         },
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         {
