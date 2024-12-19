@@ -8,9 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://uptime-web-umber.vercel.app/",
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
@@ -21,15 +19,13 @@ app.use(cookieParser());
 app.use("/", authRouter);
 app.use("/", serviceRouter);
 
-app.get("/", (req, res) => {
-  res.send("Welcome to uptime");
-});
-
 connectDB()
   .then(() => {
     console.log("Database connection established successfully");
+    app.listen(7777, () => {
+      console.log("Serever is successfully listening on port 7777...");
+    });
   })
   .catch((err) => {
     console.error("Database is unable to connect!!!");
   });
-module.exports = app;
