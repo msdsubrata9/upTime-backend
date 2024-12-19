@@ -1,13 +1,11 @@
 [build]
+  command = "npm run build"
   functions = "netlify/functions"
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/app"
+  from = "/*"
+  to = "/.netlify/functions/api"
   status = 200
   force = true
-  headers = { 
-    Access-Control-Allow-Origin = "https://uptime-fe.netlify.app", 
-    Access-Control-Allow-Credentials = "true"
-  }
+  headers = {Access-Control-Allow-Origin = "https://uptime-fe.netlify.app", Access-Control-Allow-Credentials = "true"}
   methods = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
