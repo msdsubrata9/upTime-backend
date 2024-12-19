@@ -8,7 +8,9 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://uptime-web-45ccd.web.app",
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
