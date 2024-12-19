@@ -13,7 +13,7 @@
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://uptime-web-olive.vercel.app:7777"
+          "value": "https://uptime-web-olive.vercel.app:3000"
         },
         {
           "key": "Access-Control-Allow-Methods",
