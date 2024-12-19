@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "http://uptime-web-olive.vercel.app",
+    origin: "https://uptime-web-olive.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: [
@@ -25,7 +25,7 @@ app.use(
 app.options("*", (req, res) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "http://uptime-web-olive.vercel.app"
+    "https://uptime-web-olive.vercel.app"
   );
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
