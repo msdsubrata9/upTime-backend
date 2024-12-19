@@ -1,16 +1,6 @@
 [build]
-  command = "npm run build"  # This is fine if you need a build step
-  publish = "public"         # This should be where the static files are output after build (or you can omit if not needed)
+  command = "npm run build"
+  publish = "public"
 
 [[functions]]
-  directory = "netlify/functions"  # This is correct for serverless functions
-  # You can optionally add a base name for the functions, for example:
-  # name = "api"  # Optional, if you want a specific name for the function handler
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/api"  # This points to the specific serverless function
-  status = 200
-  force = true
-  headers = {Access-Control-Allow-Origin = "https://uptime-fe.netlify.app", Access-Control-Allow-Credentials = "true"}
-  methods = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+  directory = "netlify/functions"
