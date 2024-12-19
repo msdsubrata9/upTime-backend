@@ -19,6 +19,10 @@ app.use(cookieParser());
 app.use("/", authRouter);
 app.use("/", serviceRouter);
 
+app.get("/", (req, res) => {
+  res.send("NAMASTE!!!! WELCOME TO UPTIME SERVER");
+});
+
 connectDB()
   .then(() => {
     console.log("Database connection established successfully");
@@ -29,3 +33,5 @@ connectDB()
   .catch((err) => {
     console.error("Database is unable to connect!!!");
   });
+
+module.exports = app;
