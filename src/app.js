@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://uptime-web-45ccd.web.app",
     credentials: true,
   })
 );
