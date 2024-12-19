@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use("/", authRouter);
 app.use("/", serviceRouter);
 
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
   res.send("NAMASTE!!!! WELCOME TO UPTIME SERVER");
 });
 
