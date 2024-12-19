@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "uptime-web-olive.vercel.app",
+    origin: "https://uptime-fe.netlify.app",
     credentials: true,
   })
 );
