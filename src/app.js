@@ -25,7 +25,7 @@ app.use(
 app.options("*", (req, res) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://uptime-web-olive.vercel.app"
+    "http://uptime-web-olive.vercel.app"
   );
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
