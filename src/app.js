@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://uptime-web-olive.vercel.app",
+    origin: "uptime-web-olive.vercel.app",
     credentials: true,
   })
 );
