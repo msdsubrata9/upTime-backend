@@ -21,6 +21,10 @@ app.use(cookieParser());
 app.use("/", authRouter);
 app.use("/", serviceRouter);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to uptime");
+});
+
 connectDB()
   .then(() => {
     console.log("Database connection established successfully");
